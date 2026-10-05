@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу — Виктор и Екатерина</title>
+
+    <!-- Превью ссылки в мессенджерах (одинаковое для всех гостей) -->
+    <meta property="og:title" content="Приглашение на свадьбу — Виктор и Екатерина">
+    <meta property="og:description" content="24 октября 2026, Курск. Будем рады видеть вас!">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Tenor+Sans&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cream: #faf8f2;
+            --ink: #4a463c;
+            --ink-soft: #6b6656;
+            --gold: #a9873f;
+            --gold-soft: #c7ab6d;
+            --sage: #74805f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { height: 100%; }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: radial-gradient(ellipse at top, #f3efe4 0%, #e4ddc9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 28px 16px;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 625 / 889;
+            /* Фоновая картинка лежит рядом с index.html */
+            background-color: var(--cream);
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 25px 60px -20px rgba(74,70,60,0.45), 0 0 0 1px rgba(169,135,63,0.15);
+            opacity: 0;
+            animation: appear 1.2s ease forwards;
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .content {
+            position: absolute;
+            inset: 15% 21% 14% 21%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: var(--ink);
+        }
+
+        .eyebrow {
+            font-size: clamp(0.95rem, 3.6vw, 1.2rem);
+            letter-spacing: 0.04em;
+            color: var(--ink-soft);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hosts {
+            margin-top: 6px;
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: clamp(0.7rem, 2.4vw, 0.85rem);
+            letter-spacing: 0.12em;
+            color: var(--sage);
+        }
+
+        .intro {
+            margin-top: 10px;
+            font-size: clamp(0.8rem, 2.9vw, 1rem);
+            line-height: 1.5;
+            color: var(--ink-soft);
+        }
+
+        .names {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: clamp(1.2rem, 5.25vw, 1.7rem);
+            color: var(--gold);
+            line-height: 1;
+            margin: 16px 0 6px;
+            text-shadow: 0 1px 1px rgba(169,135,63,0.15);
+        }
+
+        .divider {
+            width: 46px;
+            height: 1px;
+            background: var(--gold-soft);
+            margin: 14px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 5px;
+            height: 5px;
+            background: var(--gold-soft);
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .date {
+            font-size: clamp(1rem, 3.6vw, 1.25rem);
+            letter-spacing: 0.06em;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .wish {
+            margin-top: 14px;
+            font-size: clamp(0.78rem, 2.7vw, 0.95rem);
+            line-height: 1.55;
+            color: var(--ink-soft);
+            font-style: italic;
+        }
+
+        .details {
+            margin-top: auto;
+            padding-top: 14px;
+            font-size: clamp(0.82rem, 2.9vw, 1rem);
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        .time {
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: clamp(0.95rem, 3.3vw, 1.15rem);
+            letter-spacing: 0.08em;
+            color: var(--gold);
+        }
+
+        @media (max-width: 380px) {
+            .content { inset: 15% 19% 13% 19%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="content">
+            <div class="eyebrow" id="hello">Дорогие друзья!</div>
+            <div class="hosts" id="guests"></div>
+            <p class="intro">
+                Приглашаем вас на торжество,<br>посвящённое нашему бракосочетанию
+            </p>
+            <div class="names">Виктор &nbsp;&amp;&nbsp;Екатерина</div>
+            <div class="divider"></div>
+            <div class="date">24 октября 2026</div>
+            <p class="wish">
+                Мы будем искренне рады<br>разделить этот день с вами
+            </p>
+            <div class="details">
+                <div class="time">16:00</div>
+                Курск, Сумская ул., 110
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Читаем параметры из ссылки:
+        //   ?to=Арсений и Диана        — имена гостей
+        //   ?hello=Дорогая Анна!        — своё обращение (необязательно)
+        const params = new URLSearchParams(window.location.search);
+        const to = (params.get('to') || '').trim();
+        const hello = (params.get('hello') || '').trim();
+
+        const helloEl = document.getElementById('hello');
+        const guestsEl = document.getElementById('guests');
+
+        if (to) {
+            guestsEl.textContent = to;
+            document.title = to + ', приглашение на свадьбу Виктора и Екатерины';
+
+            // Одно имя (нет " и ", "," или "&") — обращение в единственном числе
+            const isOne = !/\s+и\s+|,|&/i.test(to);
+            if (isOne) helloEl.textContent = 'Дорогой друг!';
+        } else {
+            guestsEl.style.display = 'none';
+        }
+
+        if (hello) helloEl.textContent = hello;
+    </script>
+</body>
+</html>
