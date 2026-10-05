@@ -176,9 +176,6 @@
     </div>
 
     <script>
-        // Читаем параметры из ссылки:
-        //   ?to=Арсений и Диана        — имена гостей
-        //   ?hello=Дорогая Анна!        — своё обращение (необязательно)
         const params = new URLSearchParams(window.location.search);
         const to = (params.get('to') || '').trim();
         const hello = (params.get('hello') || '').trim();
@@ -189,8 +186,6 @@
         if (to) {
             guestsEl.textContent = to;
             document.title = to + ', приглашение на свадьбу Виктора и Екатерины';
-
-            // Одно имя (нет " и ", "," или "&") — обращение в единственном числе
             const isOne = !/\s+и\s+|,|&/i.test(to);
             if (isOne) helloEl.textContent = 'Дорогой друг!';
         } else {
